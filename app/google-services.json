@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "674023014148",
+    "firebase_url": "https://atan-fxtdkc.firebaseio.com",
+    "project_id": "atan-fxtdkc",
+    "storage_bucket": "atan-fxtdkc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674023014148:android:908da9bfa59cc8644bda51",
+        "android_client_info": {
+          "package_name": "com.huyproduct.diary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674023014148-91f963ufaepjhfpq754hjp9oqb844m3s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.huyproduct.diary",
+            "certificate_hash": "3653a7105987124e6ef62e1b31f129ab4b0f6a65"
+          }
+        },
+        {
+          "client_id": "674023014148-re5iien53ih4mn08hr2aooqbq2ablcba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCokSIy8Bsmr3QZ8r3uxo01pXWi12Zo1zA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674023014148-re5iien53ih4mn08hr2aooqbq2ablcba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

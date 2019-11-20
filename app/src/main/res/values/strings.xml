@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Diary</string>
+    <string name="title_activity_main_app">mainApp</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_pick_diary">pickDiary</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:title="Feed"
+            android:icon="@drawable/ic_view_compact_grey_500_24dp"
+            android:id="@+id/open_home"
+            />
+        <item
+            android:title="My posts"
+            android:icon="@drawable/ic_supervisor_account_grey_500_24dp"
+            android:id="@+id/open_mypost"
+            />
+        <item
+            android:icon="@drawable/ic_notifications_active_grey_500_24dp"
+            android:title="Notification"
+            android:id="@+id/open_noti"
+            />
+
+    </group>
+</menu>
