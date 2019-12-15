@@ -2,17 +2,35 @@ package com.huyproduct.diary;
 
 public class postModule
 {
+    String authorName;
+    String urlImage;
     String time;
     String date;
     String title;
     String content;
 
+    public String getAuthorName() {
+        return authorName;
+    }
 
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
 
     private postModule() {}
 
-    public postModule(String date, String time, String title, String content)
+    public postModule(String authorName, String urlImage,String date, String time, String title, String content)
     {
+        this.authorName = authorName;
+        this.urlImage = urlImage;
         this.date = date;
         this.time = time;
         this.title = title;
@@ -55,6 +73,5 @@ public class postModule
     {
         this.content = content;
     }
-
 
 }

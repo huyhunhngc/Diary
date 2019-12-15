@@ -4,12 +4,16 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -18,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -34,6 +40,9 @@ public class pickDiary extends AppCompatActivity implements DatePickerDialog.OnD
     private Map<Integer, String> dictMonth;
     private EditText titleEdit, contentEdit;
     private DatabaseReference mReference;
+    private FirebaseUser firebaseUser;
+    private Switch aSwitch;
+    private  boolean privatePost = false;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -47,6 +56,7 @@ public class pickDiary extends AppCompatActivity implements DatePickerDialog.OnD
         timeEdit = findViewById(R.id.time_picked);
         titleEdit = findViewById(R.id.title_edt);
         contentEdit = findViewById(R.id.content_edt);
+        aSwitch = findViewById(R.id.switch_private);
 
         mReference = FirebaseDatabase.getInstance().getReference();
 
@@ -62,7 +72,6 @@ public class pickDiary extends AppCompatActivity implements DatePickerDialog.OnD
 
         dateEdit.setText(mDay+" "+dictMonth.get(mMonth)+", "+mYear);
         timeEdit.setText(mHour+":"+mMinute);
-
 
 
 
@@ -87,6 +96,15 @@ public class pickDiary extends AppCompatActivity implements DatePickerDialog.OnD
             }
         });
 
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                privatePost = true;
+            }
+        });
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -101,7 +119,9 @@ public class pickDiary extends AppCompatActivity implements DatePickerDialog.OnD
         switch (item.getItemId())
         {
             case android.R.id.home:
-                onBackPressed();
+                Intent intent = new Intent(pickDiary.this,MainActivity.class);
+                startActivity(intent);
+                finish();
                 return true;
             case R.id.post_btn:
                 postDiary();
@@ -161,22 +181,33 @@ public class pickDiary extends AppCompatActivity implements DatePickerDialog.OnD
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        String author = user.getDisplayName();
+                        String uid = user.getUid();
                         String timeStr = timeEdit.getText().toString();
                         String dateStr = dateEdit.getText().toString();
                         String titleStr = titleEdit.getText().toString();
                         String contentStr = contentEdit.getText().toString();
 
-                        postModule post = new postModule(dateStr,timeStr,titleStr,contentStr);
+                        postModule post = new postModule(author ,uid ,dateStr,timeStr,titleStr,contentStr);
 
-                        mReference.child("post").push().setValue(post);
-
+                        if(privatePost)
+                        {
+                            mReference.child("post").child(firebaseUser.getUid()).push().setValue(post);
+                            Log.d("Status", "complete");
+                        }
+                        else
+                        {
+                           mReference.child("post").child(firebaseUser.getUid()).push().setValue(post);
+                            mReference.child("postPublic").push().setValue(post);
+                        }
+                        Intent intent = new Intent(pickDiary.this,MainActivity.class);
+                        startActivity(intent);
                         finish();
                     }
 
                 })
                 .setNegativeButton("No", null)
                 .show();
-
-
     }
 }

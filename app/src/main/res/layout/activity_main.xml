@@ -8,51 +8,66 @@
     android:fitsSystemWindows="true"
     android:id="@+id/drawer_layout"
     tools:openDrawer="start">
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:theme="@style/AppTheme.NoActionBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:id="@+id/collapse_toolbar"
+                app:expandedTitleTextAppearance="@android:color/transparent"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true">
                     <androidx.appcompat.widget.Toolbar
+                        android:transitionName="fromhead"
                         android:id="@+id/toolbar"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_scrollFlags="scroll|enterAlways|snap"
-                        android:background="@color/colorPrimary"
-                        app:titleTextColor="#FFF" />
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"
+                        android:layout_gravity="center"
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical">
+                        app:titleTextColor="#FFF">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/toolbar_img"
+                            android:layout_width="?attr/actionBarSize"
+                            android:layout_height="?attr/actionBarSize"
+                            android:padding="10dp"
+                            android:layout_gravity="right"
+                            android:src="@drawable/defaultuser">
 
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/switch_post"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    app:itemHorizontalTranslationEnabled="true"
-                    app:itemIconTint="#FFF"
-                    app:itemTextColor="#FFF"
-                    app:menu="@menu/menu_inhome"></com.google.android.material.bottomnavigation.BottomNavigationView>
-                <include
-                    layout="@layout/content_main"></include>
+                        </de.hdodenhof.circleimageview.CircleImageView>
+                    </androidx.appcompat.widget.Toolbar>
 
-            </LinearLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        </LinearLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        app:srcCompat="@drawable/ic_create_white_24dp" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/content_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@+id/include"
+            app:layout_anchorGravity="center"
+            android:layout_marginBottom="?attr/actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"></include>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/switch_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFF"
+            android:layout_gravity="bottom"
+            app:menu="@menu/menu_inhome"></com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"

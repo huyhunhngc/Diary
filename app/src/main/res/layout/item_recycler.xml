@@ -4,15 +4,7 @@
     android:padding="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/day_posts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="3 days ago"
-        android:textSize="14sp"
-        android:layout_marginLeft="14dp">
 
-    </TextView>
     <com.google.android.material.card.MaterialCardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -23,33 +15,79 @@
         android:padding="5dp"
 
         app:cardCornerRadius="10dip"
-        app:cardElevation="3dp"
+        app:cardElevation="1dp"
         app:cardUseCompatPadding="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:orientation="horizontal">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:transitionName="profile_photo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/image_author"
+                    android:src="@drawable/defaultuser">
+                </de.hdodenhof.circleimageview.CircleImageView>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="top"
+                    android:id="@+id/author_name"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ngọc Huy"></TextView>
+            </LinearLayout>
         <LinearLayout
             android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="horizontal">
 
-            android:weightSum="10">
-            <TextView
-                android:id="@+id/post_time_label"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="8"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:text="4:15 PM"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="14sp" />
 
             <LinearLayout
-                android:layout_weight="2"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="right">
+                    <TextView
+                        android:id="@+id/day_posts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3 days ago"
+                        android:textColor="#FFB300"
+                        android:textSize="14sp"
+                        android:layout_marginRight="5dp">
+
+                    </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="|"></TextView>
+                    <TextView
+                        android:id="@+id/post_time_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4:15 PM"
+                        android:textColor="#FFB300"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/title_post"
@@ -64,15 +102,16 @@
                 <TextView
                     android:layout_marginTop="5dp"
                     android:id="@+id/content_post"
+                    android:maxLines="6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Check status"
-                    android:textColor="@android:color/black"
+                    android:textColor="#868585"
                     android:textSize="15sp"></TextView>
             </LinearLayout>
 
         </LinearLayout>
-
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
