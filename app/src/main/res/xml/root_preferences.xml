@@ -1,0 +1,22 @@
+
+
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Cập nhật" app:icon="@drawable/ic_create_white_24dp">
+
+
+
+        <EditTextPreference
+            app:key="display"
+            app:title="Thay đổi tên"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Giao diện" app:icon="@drawable/ic_color_lens_black_24dp">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="Dark Mode" />
+    </PreferenceCategory>
+</PreferenceScreen>
